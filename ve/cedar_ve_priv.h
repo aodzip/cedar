@@ -174,6 +174,7 @@ struct cedarv_iommu_buffer
 struct cedar_variant
 {
 	int capabilities;
+	unsigned long mod_rate;
 };
 
 #define CEDARV_ISP_OLD (1 << 0)
