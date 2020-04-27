@@ -31,7 +31,7 @@ source "drivers/staging/media/sunxi/cedar/Kconfig"
 endif
 ```
 
-Add obj to "drivers/staging/media/sunxi/Menuconfig"
+Add obj to "drivers/staging/media/sunxi/Makefile"
 ```
 obj-y += cedar/
 ```
