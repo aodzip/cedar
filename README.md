@@ -4,9 +4,9 @@
 
 ## Install
 
-Put all file in "drivers/staging/media/sunxi/cedar"
+### Put all file in "drivers/staging/media/sunxi/cedar"
 
-Add source to "drivers/staging/media/sunxi/Kconfig"
+### Add source to "drivers/staging/media/sunxi/Kconfig"
 ```
 source "drivers/staging/media/sunxi/cedar/Kconfig"
 ```
@@ -31,7 +31,7 @@ source "drivers/staging/media/sunxi/cedar/Kconfig"
 endif
 ```
 
-Add obj to "drivers/staging/media/sunxi/Makefile"
+### Add obj to "drivers/staging/media/sunxi/Makefile"
 ```
 obj-y += cedar/
 ```
@@ -90,12 +90,31 @@ ion: ion {
     };
 };
 ```
+
 ## Compile
-Enable Driver in 
+### Enable Driver in 
 ```
-Device Drivers > Staging drivers > Media staging drivers
+> Device Drivers > Staging drivers > Media staging drivers
 [*]   Allwinner sunXi family Video Devices
 <*>     Allwinner CedarX Video Engine Driver
 <*>     Allwinner CedarX Ion Driver 
 ```
+### Config "DMA Contiguous Memory Allocator"
+```
+> Library routines
+-*- DMA Contiguous Memory Allocator
+*** Default contiguous memory area size: ***
+(32)  Size in Mega Bytes
+Selected region size (Use mega bytes value only)  --->
+```
 ... and here we go.
+
+## Debug
+### ION_IOC_ALLOC error / memory alloc fail
+Increase
+```
+CMA_AREAS
+CMA_SIZE_MBYTES
+```
+### Default
+Report in issue.
