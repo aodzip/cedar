@@ -43,7 +43,7 @@ obj-y += cedar/
 ```
 
 ## DeviceTree
-Demo for Allwinner V3 / V3s / S3L / S3
+### Demo for Allwinner V3 / V3s / S3L / S3
 ```
 syscon: syscon@1c00000 {
     compatible = "allwinner,sun8i-v3s-system-controller", "allwinner,sun8i-h3-system-control", "syscon";
@@ -90,7 +90,7 @@ ion: ion {
     };
 };
 ```
-Demo for Allwinner F1C100s / F1C200s (untested)
+### Demo for Allwinner F1C100s / F1C200s (untested)
 ```
 sram-controller@1c00000 {
     compatible = "allwinner,suniv-f1c100s-system-control",
