@@ -1593,9 +1593,15 @@ static struct cedar_variant sun8i_h3_quirk = {
 	.mod_rate = 402000000,
 };
 
+static struct cedar_variant suniv_f1c100s_quirk = {
+	.capabilities = 0,
+	.mod_rate = 300000000,
+};
+
 static struct of_device_id sunxi_cedar_ve_match[] = {
 	{ .compatible = "allwinner,sun8i-v3-cedar", .data = &sun8i_v3_quirk },
 	{ .compatible = "allwinner,sun8i-h3-cedar", .data = &sun8i_h3_quirk },
+	{ .compatible = "allwinner,suniv-f1c100s-cedar", .data = &suniv_f1c100s_quirk },
 	{}
 };
 MODULE_DEVICE_TABLE(of, sunxi_cedar_ve_match);

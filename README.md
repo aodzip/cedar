@@ -90,7 +90,54 @@ ion: ion {
     };
 };
 ```
+Demo for Allwinner F1C100s / F1C200s (untested)
+```
+sram-controller@1c00000 {
+	compatible = "allwinner,suniv-f1c100s-system-control",
+		     "allwinner,sun4i-a10-system-control";
+	reg = <0x01c00000 0x30>;
+	#address-cells = <1>;
+	#size-cells = <1>;
+	ranges;
 
+	sram_c: sram@1d00000 {
+		compatible = "mmio-sram";
+		reg = <0x01d00000 0x80000>;
+		#address-cells = <1>;
+		#size-cells = <1>;
+		ranges = <0 0x01d00000 0x80000>;
+
+		ve_sram: sram-section@0 {
+			compatible = "allwinner,sun8i-v3s-sram-c", "allwinner,sun4i-a10-sram-c1";
+			reg = <0x000000 0x80000>;
+		};
+    };
+};
+
+cedarx: video-codec@1c0e000 {
+	compatible = "allwinner,suniv-f1c100s-cedar";
+	reg = <0x01c0e000 0x1000>;
+	clocks = <&ccu CLK_BUS_VE>, <&ccu CLK_VE>, <&ccu CLK_DRAM_VE>;
+	clock-names = "ahb", "mod", "ram";
+	resets = <&ccu RST_BUS_VE>;
+	interrupts = <34>;
+	allwinner,sram = <&ve_sram 1>;
+	status = "disabled";
+};
+
+ion: ion {
+    compatible = "allwinner,sunxi-ion";
+    status = "disabled";
+    heap_cma@0{
+        compatible = "allwinner,cma";
+        heap-name  = "cma";
+        heap-id    = <0x4>;
+        heap-base  = <0x0>;
+        heap-size  = <0x0>;
+        heap-type  = "ion_cma";
+    };
+};
+```
 ## Compile
 ### Enable Driver in 
 ```
