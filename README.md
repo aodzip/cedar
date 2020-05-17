@@ -108,7 +108,7 @@ sram-controller@1c00000 {
         ranges = <0 0x01d00000 0x80000>;
 
         ve_sram: sram-section@0 {
-            compatible = "allwinner,sun8i-v3s-sram-c", "allwinner,sun4i-a10-sram-c1";
+            compatible = "allwinner,suniv-f1c100s-sram-c", "allwinner,sun4i-a10-sram-c1";
             reg = <0x000000 0x80000>;
         };
     };
