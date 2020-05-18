@@ -1,6 +1,8 @@
 #ifndef _SUNXI_ION_PRIV_H
 #define _SUNXI_ION_PRIV_H
 
+#include "cache.h"
+
 #define ION_IOC_SUNXI_FLUSH_RANGE           5
 #define ION_IOC_SUNXI_FLUSH_ALL             6
 #define ION_IOC_SUNXI_PHYS_ADDR             7
@@ -24,9 +26,5 @@ struct ion_cma_buffer_info {
 	dma_addr_t handle;
 	struct sg_table *table;
 };
-
-int flush_clean_user_range(long start, long end);
-int flush_user_range(long start, long end);
-void flush_dcache_all(void);
 
 #endif

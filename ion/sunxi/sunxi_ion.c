@@ -55,6 +55,7 @@ long sunxi_ion_ioctl(struct ion_client *client, unsigned int cmd,
 {
 	long ret = 0;
 	switch (cmd) {
+#if __LINUX_ARM_ARCH__ == 7
 	case ION_IOC_SUNXI_FLUSH_RANGE: {
 		sunxi_cache_range range;
 		if (copy_from_user(&range, (void __user *)arg,
@@ -73,7 +74,7 @@ long sunxi_ion_ioctl(struct ion_client *client, unsigned int cmd,
 		flush_dcache_all();
 		break;
 	}
-
+#endif
 	case ION_IOC_SUNXI_PHYS_ADDR: {
 		sunxi_phys_data data;
 		struct ion_handle *handle;
