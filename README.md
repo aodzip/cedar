@@ -165,3 +165,6 @@ CMA_SIZE_MBYTES
 ```
 ### Default
 Report in issue.
+
+## Userspace library
+https://github.com/aodzip/libcedarc
