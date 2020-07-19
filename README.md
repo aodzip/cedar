@@ -90,7 +90,18 @@ ion: ion {
     };
 };
 ```
-### Demo for Allwinner F1C100s / F1C200s (untested)
+### Demo for Allwinner F1C100s / F1C200s
+
+In drivers/clk/sunxi-ng/ccu-suniv-f1c100s.c
+
+Change
+
+    static SUNXI_CCU_GATE(ve_clk, "ve", "pll-audio", 0x13c, BIT(31), 0);
+
+To
+
+    static SUNXI_CCU_GATE(ve_clk, "ve", "pll-ve", 0x13c, BIT(31), 0);
+
 ```
 sram-controller@1c00000 {
     compatible = "allwinner,suniv-f1c100s-system-control",

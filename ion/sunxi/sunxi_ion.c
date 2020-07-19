@@ -18,6 +18,7 @@
 #include <linux/of.h>
 #include <linux/mm.h>
 #include <linux/uaccess.h>
+#include <asm/cacheflush.h>
 #include "../ion_priv.h"
 #include "../ion.h"
 #include "../ion_of.h"
@@ -55,7 +56,6 @@ long sunxi_ion_ioctl(struct ion_client *client, unsigned int cmd,
 {
 	long ret = 0;
 	switch (cmd) {
-#if __LINUX_ARM_ARCH__ == 7
 	case ION_IOC_SUNXI_FLUSH_RANGE: {
 		sunxi_cache_range range;
 		if (copy_from_user(&range, (void __user *)arg,
@@ -63,13 +63,18 @@ long sunxi_ion_ioctl(struct ion_client *client, unsigned int cmd,
 			ret = -EINVAL;
 			goto end;
 		}
+		
+#if __LINUX_ARM_ARCH__ == 7
 		if (flush_clean_user_range(range.start, range.end)) {
 			ret = -EINVAL;
 			goto end;
 		}
+#else
+		dmac_flush_range((void*)range.start, (void*)range.end);
+#endif
 		break;
 	}
-
+#if __LINUX_ARM_ARCH__ == 7
 	case ION_IOC_SUNXI_FLUSH_ALL: {
 		flush_dcache_all();
 		break;

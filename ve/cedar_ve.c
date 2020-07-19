@@ -717,9 +717,6 @@ static long compat_cedardev_ioctl(struct file *filp, unsigned int cmd,
 					 arg_rate * 1000000)) {
 				dev_warn(cedar_devp->platform_dev,
 					 "set ve clock failed\n");
-			} else {
-				dev_warn(cedar_devp->platform_dev,
-					 "set pll4 clock failed\n");
 			}
 		}
 		ret = clk_get_rate(cedar_devp->mod_clk);
@@ -1638,3 +1635,4 @@ MODULE_DESCRIPTION("User mode CEDAR device interface");
 MODULE_LICENSE("GPL");
 MODULE_VERSION(DRV_VERSION);
 MODULE_ALIAS("platform:cedarx-sunxi");
+
