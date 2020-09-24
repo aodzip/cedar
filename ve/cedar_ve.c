@@ -1591,7 +1591,7 @@ static struct cedar_variant sun8i_h3_quirk = {
 };
 
 static struct cedar_variant suniv_f1c100s_quirk = {
-	.capabilities = 0,
+	.capabilities = CEDARV_ISP_OLD,
 	.mod_rate = 300000000,
 };
 
@@ -1635,4 +1635,3 @@ MODULE_DESCRIPTION("User mode CEDAR device interface");
 MODULE_LICENSE("GPL");
 MODULE_VERSION(DRV_VERSION);
 MODULE_ALIAS("platform:cedarx-sunxi");
-
