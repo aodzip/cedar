@@ -106,7 +106,7 @@ int ion_heap_map_user(struct ion_heap *heap, struct ion_buffer *buffer,
 
 static int ion_heap_clear_pages(struct page **pages, int num, pgprot_t pgprot)
 {
-	void *addr = vm_map_ram(pages, num, -1, pgprot);
+	void *addr = vm_map_ram(pages, num, -1);
 
 	if (!addr)
 		return -ENOMEM;
@@ -313,7 +313,7 @@ void ion_heap_init_shrinker(struct ion_heap *heap)
 	heap->shrinker.scan_objects = ion_heap_shrink_scan;
 	heap->shrinker.seeks = DEFAULT_SEEKS;
 	heap->shrinker.batch = 0;
-	register_shrinker(&heap->shrinker);
+	register_shrinker(&heap->shrinker, "ion_heap");
 }
 
 struct ion_heap *ion_heap_create(struct ion_platform_heap *heap_data)

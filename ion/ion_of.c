@@ -18,7 +18,7 @@
 #include <linux/clk.h>
 #include <linux/dma-mapping.h>
 #include <linux/cma.h>
-#include <linux/dma-contiguous.h>
+#include "dma-contiguous.h"
 #include <linux/io.h>
 #include <linux/of_reserved_mem.h>
 #include "ion.h"
